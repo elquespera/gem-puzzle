@@ -1,0 +1,52 @@
+body.dialog-open {
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 9998;
+  }
+
+  .dialog {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: dialog-animation 0.3s;
+
+    .dialog-wrapper {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 1em;
+      min-height: min(200px, 90vh);
+      min-width: min(300px, 90vw);
+      padding: 1.5em 1em; 
+      border-radius: 0.3em;
+      background-color: var(--bg-color);
+      box-shadow: var(--dialog-shadow);
+    }
+    .buttons-wrapper {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+  }
+}
+
+@keyframes dialog-animation {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: slace(1);
+    opacity: 1;
+  }
+  
+}

@@ -1,0 +1,37 @@
+@use 'variables';
+.score-wrapper {
+  .option-group {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: min(3vw, 0.78em);
+    margin: 1em 0;
+  }
+  .score-table {
+    border-spacing: min(2vw, 0.8em);
+    th {
+      text-align: left;
+      hyphens: auto;
+    }
+    th, td {
+      padding: 0 min(1vw, 1em);
+    }
+    td {
+      text-align: right;
+    }
+    td:nth-child(5) {
+      text-align: center;
+    }
+
+    @media screen and (max-width: variables.$mobile-breakpoint) {
+      th:nth-child(2), td:nth-child(2) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      th:nth-child(5), td:nth-child(5) {
+        display: none;
+      }
+    }
+  }
+}

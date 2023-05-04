@@ -1,0 +1,94 @@
+.puzzle-wrapper {
+  position: relative;
+  margin: 0.5em auto 1em;
+  padding: var(--puzzle-padding);
+  width: var(--puzzle-width);
+  height: var(--puzzle-width);
+  background-color: var(--puzzle-bg-color);
+  box-shadow: var(--puzzle-shadow);
+  border-radius: 0.3em;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-color);
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translateY(-100%);
+  }
+
+  .puzzle-tile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    color: var(--tile-color);
+    user-select: none;
+    transition: transform 0.5s;
+
+    &::after {
+      --size: 92%;
+      content: '';
+      position: absolute;
+      margin: auto;
+      width: var(--size); 
+      height: var(--size);
+      z-index: -1;
+      border-radius: 0.2em;
+      background-color: var(--tile-bg-color);
+      box-shadow: var(--tile-shadow);
+    }
+    &.zero {
+      transition: none;
+      &::after {
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
+    &.active {
+      cursor: pointer;
+      pointer-events: all;
+    }
+    &.active::after {
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    &.active:hover {
+      &::after {
+        transform: scale(1.03);
+        background-color: var(--tile-hover-bg-color);
+      }
+      & .puzzle-tile-text {
+        transform: scale(1.03);
+      }
+    }
+    .puzzle-tile-text {
+      position: relative;
+      font-size: calc(var(--tile-size) * 0.5);
+      transition: transform 0.2s;
+    }
+
+    &.dragged {
+      opacity: 0;
+    }
+    &.dragover {
+      &::after {
+        --size: 80%;
+        background-color: transparent;
+        border: 0.3em dashed var(--tile-hover-bg-color);
+      }
+    }
+    &.notransition {
+      transition: none !important;
+    }
+  }
+}
+
+body.paused .puzzle-wrapper::after {
+  transform: none;
+  opacity: 0.9;
+}
+

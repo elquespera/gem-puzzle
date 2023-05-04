@@ -1,0 +1,124 @@
+button {
+  text-transform: uppercase;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  position: relative;
+  color: var(--button-color);
+  padding: 0.7em 1em;
+  border-radius: 1em;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  font-size: inherit;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &::before {
+    z-index: -2;
+    background-color: var(--button-bg-color);    
+  }
+
+  &::after {
+    z-index: -1;
+    background-color: var(--button-hover-bg-color);
+    transform: translateX(-110%);
+    transition: transform 0.3s;
+  }
+  
+  &:hover {
+    &::after {
+      transform: translateX(0);
+    }
+  }
+  &:focus {
+    outline: 1px solid var(--button-hover-bg-color);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &.primary {
+    color: var(--button-primary-color);
+    font-weight: bold;
+    &:focus {
+      outline: 1px solid var(--button-primary-hover-bg-color);
+    }
+    &::before {
+      background-color: var(--button-primary-bg-color);    
+    }
+    &::after {
+      background-color: var(--button-primary-hover-bg-color);
+    }
+  }
+
+  &.checked {
+    font-weight: bold;
+    &::before {
+      background-color: var(--button-hover-bg-color);
+    }
+  }
+
+  &.checkbox {
+    & .checkbox-body {
+      position: relative;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.3em;
+      border: 0.15em solid var(--button-color);
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0.08em;
+        border-radius: 0.15em;
+        background-color: var(--button-color);
+        transform: scale(0);
+        transition: transform 0.3s;
+      }      
+    }
+  }
+
+  &.checkbox.checked {
+    & .checkbox-body::after {
+      transform: scale(1);
+    }
+  }
+
+  .icon {
+    position: relative;
+    width: 0.8em;
+    height: 0.8em;
+    background: url('../assets/icons/shuffle.svg') no-repeat center;
+    filter: invert(1);
+    &.score {
+      background-image: url('../assets/icons/score.svg');
+    }
+    &.save {
+      background-image: url('../assets/icons/save.svg');
+    }
+    &.restore {
+      background-image: url('../assets/icons/restore.svg');
+    }
+    &.solve {
+      background-image: url('../assets/icons/solve.svg');
+    }
+  }
+}
+
+.dark-theme button:not(.primary) .icon {
+  filter: none;
+}

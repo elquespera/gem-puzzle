@@ -1,0 +1,51 @@
+$mobile-breakpoint: 700px;
+
+body {
+  --bg-color: #FAF8F0;
+  --font-color: #6C584B;
+
+  --button-color: var(--bg-color);
+  --button-bg-color: #849A47;
+  --button-hover-bg-color: #485427;
+  --button-primary-color: var(--button-color);
+  --button-primary-bg-color: var(--tile-bg-color);
+  --button-primary-hover-bg-color: var(--tile-hover-bg-color);
+
+  --puzzle-size: 4;
+  --puzzle-bg-color: #F0EAD1;
+  --puzzle-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+  --puzzle-padding: min(4vw, 1.3em);
+  --puzzle-width: calc(var(--puzzle-size) * var(--tile-size) + 2 * var(--puzzle-padding));
+
+  --tile-size: min(calc((9 - min(var(--puzzle-size), 6.5)) * 4vw), 5em);
+  --tile-color: var(--bg-color);
+  --tile-bg-color: #A98467;
+  --tile-hover-bg-color: #6C584B;
+  --tile-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
+
+  --dialog-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme {
+  --bg-color: #181D26;
+  --font-color: #E0FBFC;
+
+  --button-color: var(--bg-color);
+  --button-bg-color: #98C1D9;
+  --button-hover-bg-color: #5B9DC2;
+  --button-primary-color: var(--tile-color);
+  --button-primary-bg-color: var(--tile-bg-color);
+  --button-primary-hover-bg-color: var(--tile-hover-bg-color);
+
+  --puzzle-bg-color: #E0FBFC;
+
+  --tile-color: #FCE0DA;
+  --tile-bg-color: #EE522F;
+  --tile-hover-bg-color: #D03411;
+
+  --dialog-shadow: 0px 0px 20px 0px rgba(255, 255, 2555, 0.35);
+
+  header .info-wrapper .timer::before {
+    filter: none;
+  }
+}

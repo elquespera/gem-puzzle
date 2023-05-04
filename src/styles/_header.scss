@@ -1,0 +1,71 @@
+@use 'variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+header {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 2em;
+  font-size: min(4vw, 1em);
+
+  .buttons-wrapper {
+    display: flex;
+    gap: 0.5em;
+    user-select: none;
+  }
+
+  .info-wrapper {
+    min-width: var(--puzzle-width);
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    & > span {
+      display: inline-flex;
+      gap: 0.3em;
+      align-items: baseline;
+    }
+    .info-value {
+      user-select: none;      
+      font-size: 1.3em;
+      font-weight: bold;
+      font-family: 'Roboto Mono', monospace;
+      display: inline-block;
+      color: var(--bg-color);
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
+      background-color: var(--font-color);
+    }
+    .timer {
+      cursor: pointer;
+      display: flex;
+      gap: 0.3em;
+      align-items: center;
+
+      &::before {
+        content: '';
+        position: relative;
+        width: 0.8em;
+        height: 0.8em;
+        background: url('../assets/icons/pause.svg') no-repeat center / cover;
+        filter: invert(1);
+      }
+      &.disabled {
+        cursor: auto;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+body.paused header .info-wrapper .timer::before {
+  background-image: url('../assets/icons/play.svg');
+}
+
+@media screen and (max-width: variables.$mobile-breakpoint) {
+  header .buttons-wrapper button .button-text {
+    display: none;
+  }
+}

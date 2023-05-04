@@ -1,0 +1,42 @@
+// Imports
+@use 'variables';
+@use 'header';
+@use 'footer';
+@use 'settings';
+@use 'button';
+@use 'option-group';
+@use 'dialog';
+@use 'puzzle';
+@use 'scores';
+
+// Fonts import
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+
+// Reset
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  color: var(--font-color);
+  background-color: var(--bg-color);
+}
+
+html, body, .app-wrapper {
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  overflow-x: hidden;
+  padding: 1em 0;
+}
